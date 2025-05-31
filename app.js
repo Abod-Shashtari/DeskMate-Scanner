@@ -3,14 +3,12 @@ let socket;
 let robotIp = '';
 let currentScreen = 'scanner-screen';
 
-// Check URL for scanned content
 function checkUrlForIp() {
     const currentPath = decodeURIComponent(window.location.pathname.substring(1));
     
     if (currentPath && currentPath !== 'index.html' && !currentPath.includes('.html')) {
         robotIp = currentPath.trim();
         document.getElementById("ip").value = robotIp;
-        showScreen('mode-screen');
         connectToRobot();
     }
 }
