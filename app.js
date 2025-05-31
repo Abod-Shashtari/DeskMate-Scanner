@@ -39,8 +39,8 @@ function processIpAndContinue() {
     }
     
     robotIp = ip;
-    window.location.href = `${robotIp}`;
-
+    const url = robotIp.startsWith('http') ? robotIp : `http://${robotIp}`;
+    window.location.href = url;
 }
 
 function updateStatus(state, message) {
@@ -232,8 +232,8 @@ function startScanner() {
                 document.getElementById("ip").value = code.data.trim();
                 robotIp = code.data.trim();
                 
-                // Update URL to just the scanned content and reload
-                window.location.href = `${robotIp}`;
+                const url = robotIp.startsWith('http') ? robotIp : `http://${robotIp}`;
+                window.location.href = url;
                 
                 return;
             }
