@@ -18,8 +18,14 @@ function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
     });
-    document.getElementById(screenId).classList.add('active');
-    currentScreen = screenId;
+
+    const screenToShow = document.getElementById(screenId);
+    if (screenToShow) {
+        screenToShow.classList.add('active');
+        currentScreen = screenId;
+    } else {
+        console.warn(`Screen with ID "${screenId}" not found.`);
+    }
 }
 
 // Manual IP entry
