@@ -1,5 +1,4 @@
 // Global variables
-let socket;
 let robotIp = '';
 let currentScreen = 'scanner-screen';
 
@@ -42,34 +41,6 @@ function processIpAndContinue() {
     
     robotIp = ip;
     window.location.href = `/${encodeURIComponent(robotIp)}`;
-}
-
-// WebSocket connection
-function connectToRobot() {
-    if (!robotIp) {
-        updateStatus('error', 'No IP address provided');
-        return;
-    }
-    
-    try {
-        socket = new WebSocket(`ws://${robotIp}:81`);
-        
-        socket.onopen = () => {
-            updateStatus('connected', 'Connected');
-        };
-        
-        socket.onclose = () => {
-            updateStatus('disconnected', 'Disconnected');
-        };
-        
-        socket.onerror = (error) => {
-            console.error('WebSocket Error:', error);
-            updateStatus('error', 'Connection Error');
-        };
-    } catch (error) {
-        console.error('Connection Error:', error);
-        updateStatus('error', 'Connection Error');
-    }
 }
 
 function updateStatus(state, message) {
