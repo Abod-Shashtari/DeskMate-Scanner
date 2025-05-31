@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RoboAssist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- QR Scanner Screen -->
+        <div id="scanner-screen" class="screen active">
+            <h1><i class="fas fa-robot"></i> RoboAssist</h1>
+            <h2>Scan QR Code to Connect</h2>
+            <div id="reader">
+                <video id="video" style="width:100%;height:auto;" autoplay playsinline></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+            </div>
+            <div id="qr-reader-results">Position QR code in the frame</div>
+            <button class="btn btn-secondary" onclick="manualConnect()">
+                <i class="fas fa-keyboard"></i> Enter IP Manually
+            </button>
+        </div>
+
+        <!-- Manual IP Entry Screen -->
+        <div id="manual-screen" class="screen">
+            <button class="btn btn-back btn-secondary" onclick="showScreen('scanner-screen')">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1>Manual Connection</h1>
+            <h2>Enter Robot IP Address</h2>
+            <input id="ip" type="text" placeholder="192.168.1.100"
+                style="width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #e9ecef; margin: 20px 0; font-size: 16px;">
+            <button class="btn" onclick="processIpAndContinue()">
+                <i class="fas fa-plug"></i> Connect
+            </button>
+        </div>
+
+        </div>
+    </div>
+
+    <script src="jsQR.js"></script>
+    <script src="app.js"></script>
+</body>
+
+
+</html>
