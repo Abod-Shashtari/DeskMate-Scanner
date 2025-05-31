@@ -8,7 +8,6 @@ function checkUrlForIp() {
     if (currentPath && currentPath !== 'index.html' && !currentPath.includes('.html')) {
         robotIp = currentPath.trim();
         document.getElementById("ip").value = robotIp;
-        connectToRobot();
     }
 }
 
