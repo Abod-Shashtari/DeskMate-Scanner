@@ -40,7 +40,8 @@ function processIpAndContinue() {
     }
     
     robotIp = ip;
-    window.location.href = `/${encodeURIComponent(robotIp)}`;
+    window.location.href = `${robotIp}`;
+
 }
 
 function updateStatus(state, message) {
@@ -110,7 +111,7 @@ function startScanner() {
                 robotIp = code.data.trim();
                 
                 // Update URL to just the scanned content and reload
-                window.location.href = `/${encodeURIComponent(robotIp)}`;
+                window.location.href = `${robotIp}`;
                 
                 return;
             }
